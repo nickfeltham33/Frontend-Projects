@@ -2,7 +2,7 @@
 let total = 0;
 let currentInput = "";
 let previousOperator = "";
-let clearNext = false; // Flag to clear the display on the next input
+let flag = false; // Flag to clear the display on the next input
 
 // Define references to HTML elements
 const display = document.querySelector(".input_display");
@@ -31,20 +31,21 @@ buttons.forEach(button => {
 });
 
 // Function to handle number button clicks.
-// checks the value of clearNext. 
+// checks the value of flag. 
 // if it is trued then it will set the value of the current input to an empty string.
-// it will then reset the clearNext back to false.
-// The idea of this is that when an operator button is clicked, the clearnext to set to true.
+// it will then reset the flag back to false.
+// The idea of this is that when an operator button is clicked, the flag to set to true.
 // This means that on the next number input, the currentInput value will be cleared, before adding a new input to the dipsplay.
+// More on using flags https://www.geeksforgeeks.org/use-of-flag-in-programming/
 // function handleNumberClick(value) {
 
 // Added a check to remove the leading 0.
 // if the currentInput is just a "0" on its own, then this is removed on click.
 
 function handleNumberClick(value) {
-    if (clearNext) {
+    if (flag) {
         currentInput = "";
-        clearNext = false;
+        flag = false;
     }
 
     if (currentInput === "0") {
@@ -70,18 +71,18 @@ function handleOperatorClick(operator) {
     }
 
     previousOperator = operator;
-    clearNext = true;
+    flag = true;
     totalDisplay.innerText = total;
 }
 
 // Function to handle the clear button click.
 // Resets the totals to the original values.
-// It also sets the clearNext to false.
+// It also sets the flag to false.
 function handleClearClick() {
     total = 0;
     currentInput = "";
     previousOperator = "";
-    clearNext = false;
+    flag = false;
     display.innerText = "0";
     totalDisplay.innerText = "0";
 }
