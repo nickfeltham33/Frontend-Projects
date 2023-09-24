@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>A Whole Lot of Doggos!</title>
+    <title>Too Many Doggos!</title>
 </head>
 <body>
     <main>
         <!-- Nav -->
         <nav>
             <div class="logo">
-                <img class="logo-img" src="./logo/doggo_logo.svg" alt="logo - a line drawing of a dog">
+                <img class="logo-img" src="./images/logo/doggo_logo.svg" alt="logo - a line drawing of a dog">
                 <p class="logo-text">Too Many Doggo's</p>
             </div>
             <div class="menu-btn">
@@ -27,14 +27,14 @@
                     <h1 class="title">How many doggo's is too many dogoo's? Let's find out!</h1>
                     <p class="subtitle">There’s millions of random Doggos available at the click of a button. “But why?” I hear you ask! Well we say why the %#!$ not! But, essentially this is just to test out some API functionality in a slightly more exciting way. Anyway click the button to get some Doggos... Now!!</p>
                     <button class="shadow">
-                        <a href="#gallery">Give Me Doggos!</a>
+                        <a href="#gallery-nav">Show Me The Doggos!</a>
                     </button>
                 </div>
             </div>
 
             <div class="right-wrap">
                 <div class="main-image-wrap">
-                    <img class="main-img" src="./logo/doggoLanding.png" alt="a dog wearing sunglassess">
+                    <img class="main-img" src="./images/images/doggoLanding.png" alt="a dog wearing sunglassess">
                 </div>
             </div>
         </section>
@@ -43,34 +43,62 @@
             <div class="intro-wrap">
                 <h2>How It Works</h2>
                 <p class="text">The point of this random website is to enter the number of dogs you think there will be. It will be anywhere between 1-56 ish, so keep the guesses between them. If you get it correct, then whoop-dee-facking-doo! I have only added this functionality to put a limit on the number of images added in one go. Anyway, on you pop and enjoy the Doggo's!</p>
+                <div class="info-graphic">
+                    <div class="step-wrap">
+                        <div class="step-number-wrap">
+                            <p class="step-number">1</p>
+                        </div>
+                        <div class="step-img-wrap">
+                            <img class="step-img" src="./images/steps/withbg/step-1.png" alt="step image">
+                        </div>
+                        <p class="info-text">Start adding Doggo’s by clicking “add more Doggo’s”. Click “Stop” to see if you have the right number of Doggo’s</p>
+                    </div>
+                    <div class="step-wrap">
+                        <div class="step-number-wrap">
+                            <p class="step-number">2</p>
+                        </div>
+                        <div class="step-img-wrap">
+                            <img class="step-img" src="./images/steps/withbg/step-2.png" alt="step image">
+                        </div>
+                        <p class="info-text">Start adding Doggo’s by clicking “add more Doggo’s”. Click “Stop” to see if you have the right number of Doggo’s</p>
+                    </div>
+                    <div class="step-wrap">
+                        <div class="step-number-wrap">
+                            <p class="step-number">3</p>
+                        </div>
+                        <div class="step-img-wrap">
+                            <img class="step-img" src="./images/steps/withbg/step-3.png" alt="step image">
+                        </div>
+                        <p class="info-text">Start adding Doggo’s by clicking “add more Doggo’s”. Click “Stop” to see if you have the right number of Doggo’s</p>
+                    </div>
+                </div>
             </div>
         </section>
 
 
         <!-- Gallery -->
         <section id="gallery">
+            <h2>Let's Go Doggo's!</h2>
             <div id="grid-wrap"></div>
-            <div class="gallery-nav">
-                <button class="add-btn" id="dog-btn" class="shadow">Add More Doggos!
-                    <div class="plus-icon-wrap">
-                        </div>
-                </button>
-                <div class="count-wrap">
-                    <p>Number of Doggo's:</p>
-                    <p class="doggo-num"></p>
-                </div>
-                <div class="clicks-wrap">
-                    <p>Guesses Left: </p>
-                    <p class="guesses-num"></p>
-                </div>
-
-                <button class="finish-btn" id="stop-btn" class="shadow">Stop Adding Doggo's!
-                    <div class="stop-icon-wrap">
-                        </div>
-                </button>
-            </div>
         </section>
+        <div class="gallery-nav" id="gallery-nav">
+            <button class="add-btn" id="dog-btn" class="shadow">Add More Doggos!
+                <div class="plus-icon-wrap"></div>
+            </button>
+            <div class="count-wrap">
+                <p>Number of Doggo's:</p>
+                <p class="doggo-num"></p>
+            </div>
+            <div class="clicks-wrap">
+                <p>Guesses Left: </p>
+                <p class="guesses-num"></p>
+            </div>
 
+            <button class="finish-btn" id="stop-btn" class="shadow">Stop Adding Doggo's!
+                <div class="stop-icon-wrap">
+                    </div>
+            </button>
+        </div>
         <div id="progress-message"></div>
     </main>
     <script src="script.js"></script>

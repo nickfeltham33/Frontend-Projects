@@ -5,12 +5,15 @@ let currentDoggos = 0;
 let ranNum = randomNum();
 let clicksLeft = 3;
 
+const gallery = document.getElementById("gallery");
 
 const doggos = document.getElementById("grid-wrap");
 document.getElementById("dog-btn").addEventListener("click", addNewDoggo);
 
 const endBtn = document.getElementById("stop-btn");
 endBtn.addEventListener("click", stopClick);
+
+const progressMessage = document.getElementById("progress-message");
 
 function addNewDoggo() {
   const promise = fetch(DOG_URL);
@@ -68,6 +71,12 @@ function count () {
     currentDoggos = doggoCount.length;
     countDiv.innerText = currentDoggos;
     clicksDiv.innerText = clicksLeft;
+    if (currentDoggos > 3) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+    if (currentDoggos > ranNum) {
+      loser();
+    }
 }
 
 function randomNum () {
@@ -86,25 +95,25 @@ function stopClick () {
     if(clicksLeft < 0) {
       loser();
     }
-    if (finalNum > ranNum) {
-      loser();
-    }
     if (finalNum === ranNum) {
       winner();
     }
     else if (finalNum > ranNum - 5) {
-      console.log("under 5");
+      alert("within 5");
     }
     else if (finalNum > ranNum - 10 && finalNum < ranNum -5) {
-      console.log("under 10");
+      alert("within 10");
     }
     else {
-      console.log("Your way off!");
+      alert("You're way off!");
     }
 }
 
 function loser () {
-  alert("You're a loser. All Dogs hate you!")
+  alert("All Dogs hate you! Try again loser!")
+  setTimeout(function() {
+    location.reload();
+  },500)
 }
 
 function winner () {
