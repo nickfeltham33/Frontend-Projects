@@ -1,0 +1,1 @@
+const WORD_URL = "https://words.dev-apis.com/word-of-the-day";

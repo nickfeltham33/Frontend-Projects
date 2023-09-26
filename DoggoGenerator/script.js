@@ -15,16 +15,11 @@ endBtn.addEventListener("click", stopClick);
 
 const progressMessage = document.getElementById("progress-message");
 
-function addNewDoggo() {
-  const promise = fetch(DOG_URL);
-  promise
-    .then(function (response) {
-      const processingPromise = response.text();
-      return processingPromise;
-    })
-    .then(function (processedResponse) {
-      const dogObject = JSON.parse(processedResponse);
-      
+async function addNewDoggo() {
+  const promise = await fetch(DOG_URL);
+  const processedResponse = await promise.json();
+  console.log(processedResponse);
+
       // Create the outer div with class "img-wrap"
       const imgWrapDiv = document.createElement("div");
       imgWrapDiv.classList.add("img-wrap");
@@ -32,7 +27,7 @@ function addNewDoggo() {
       // Create the inner div with class "dog-img"
       const dogImgDiv = document.createElement("div");
       dogImgDiv.classList.add("dog-img");
-      dogImgDiv.style.backgroundImage = `url('${dogObject.message}')`;
+      dogImgDiv.style.backgroundImage = `url('${processedResponse.message}')`;
       dogImgDiv.style.backgroundSize = "cover";
 
       // Create the inner div with class "img-bg"
@@ -46,7 +41,6 @@ function addNewDoggo() {
       // Append the outer div to the "dog-target" container
       doggos.appendChild(imgWrapDiv);
       count();
-    });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -92,25 +86,27 @@ function stopClick () {
     console.log(ranNum);
     clicksLeft -= 1;
     count();
-    if(clicksLeft < 0) {
+    if(clicksLeft <= 0) {
       loser();
+    } else {
+      if (finalNum === ranNum) {
+        winner();
+      }
+      else if (finalNum > ranNum - 5) {
+        alert("Now this is close!");
+      }
+      else if (finalNum > ranNum - 10 && finalNum < ranNum -5) {
+        alert("You're getting warm!");
+      }
+      else {
+        alert("Man, you're way off!");
+      }
     }
-    if (finalNum === ranNum) {
-      winner();
-    }
-    else if (finalNum > ranNum - 5) {
-      alert("within 5");
-    }
-    else if (finalNum > ranNum - 10 && finalNum < ranNum -5) {
-      alert("within 10");
-    }
-    else {
-      alert("You're way off!");
-    }
+
 }
 
 function loser () {
-  alert("All Dogs hate you! Try again loser!")
+  alert(`All Dogs hate you! Try again loser! There were ${ranNum} Dog's!`)
   setTimeout(function() {
     location.reload();
   },500)
@@ -118,10 +114,11 @@ function loser () {
 
 function winner () {
   alert("You are the Winner, email me your bank details including your mother's maiden name and postcode, and we will send you a prize!")
+  /* Function to open a form in a modal */
 }
 
 
-/* 
+/*
 users has up to three clicks to get as close as possible without going over the number.
 with each finalClick the numClick needs to update.
 if numClicks is over 3, then fire a loser function();
@@ -130,3 +127,50 @@ If the finalnumber is within 5, alert "Wow, this is sooo close!"
 If the final number is with in 10, alert "Getting warm!".
 If the final Mnumber is outside of 10, then alert " You got a lot more Doggos to go!"
 */
+
+/* TO DO */
+/*
+needs tweaking in design
+repsonsiveness
+change alerts to 'progress-message'
+add score keeping utility
+score coul be based on how close you get and how many guesses you have left.
+The how to looks good in figma, but not so much in the browser.
+more definition with gradients
+animations
+*/
+
+// Old function
+// function addNewDoggo() {
+//   const promise = fetch(DOG_URL);
+//   promise
+//     .then(function (response) {
+//       const processingPromise = response.text();
+//       return processingPromise;
+//     })
+//     .then(function (processedResponse) {
+//       const dogObject = JSON.parse(processedResponse);
+
+//       // Create the outer div with class "img-wrap"
+//       const imgWrapDiv = document.createElement("div");
+//       imgWrapDiv.classList.add("img-wrap");
+
+//       // Create the inner div with class "dog-img"
+//       const dogImgDiv = document.createElement("div");
+//       dogImgDiv.classList.add("dog-img");
+//       dogImgDiv.style.backgroundImage = `url('${dogObject.message}')`;
+//       dogImgDiv.style.backgroundSize = "cover";
+
+//       // Create the inner div with class "img-bg"
+//       const imgBgDiv = document.createElement("div");
+//       imgBgDiv.classList.add("img-bg");
+
+//       // Append the inner divs to the outer div
+//       imgWrapDiv.appendChild(dogImgDiv);
+//       imgWrapDiv.appendChild(imgBgDiv);
+
+//       // Append the outer div to the "dog-target" container
+//       doggos.appendChild(imgWrapDiv);
+//       count();
+//     });
+// }

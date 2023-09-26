@@ -263,12 +263,12 @@ section#gallery {
 #grid-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5rem; /* Adjust the gap as needed */
+    grid-gap: 5vw; /* Adjust the gap as needed */
 }
 
 
 .img-wrap {
-    height: 30rem;
+    height: 20vw;
     position: relative;
     padding: 1rem;
 }
@@ -279,7 +279,7 @@ section#gallery {
     position: relative;
     z-index: 2;
     border-radius: 40px;
-    border: 1rem solid var(--white);
+    border: 1vw solid var(--white);
 }
 
 .img-bg {
@@ -298,4 +298,9 @@ section#gallery {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+#progress-message {
+    position: relative;
+    z-index: 999;
 }
