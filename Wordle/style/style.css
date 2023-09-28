@@ -1,17 +1,20 @@
 :root {
     /* Colours */
     font-size: 16px;
-    --primary: #FFA202;
     --dark: #1E1E1E;
     --grey: #a5a5a5;
     --white: #ffffff;
-    font-family: 'Lilita One', cursive;
+    --correct: #10b924;
+    --close: #edd922;
+    --invalid: #d40000;
     scroll-behavior: smooth;
 }
 
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Lilita One', cursive;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -34,12 +37,13 @@ section {
     padding: 5% 0;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .grid-wrap {
     margin: 0 auto;
     max-width: 30rem;
-}
-
-.grid-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
@@ -61,4 +65,36 @@ section {
 
 .letter:active {
     border: 0.25rem solid var(--dark);
+}
+
+.highlighted {
+    border: 0.25rem solid var(--dark);
+}
+
+.correct {
+    background-color: var(--correct);
+    color: var(--white);
+}
+
+.close {
+    background-color: var(--close);
+    color: var(--white);
+}
+
+.wrong{
+    background-color: var(--grey);
+    color: var(--white);
+}
+
+.invalid {
+    animation: flash 1s ease;
+}
+
+@keyframes flash {
+    5% {
+        border-color: var(--invalid);
+    }
+    100% {
+        border-color: var(--grey);
+    }
 }
