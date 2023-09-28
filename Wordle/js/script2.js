@@ -7,6 +7,8 @@ let currentRow = 0;
 
 
 async function init() {
+    const res = await fetch("https://words.dev-apis.com/word-of-the-day")
+    console.log(res);
     document.addEventListener("keydown", function handleKeyPress (event) {
         const action = event.key;
         console.log(action);
