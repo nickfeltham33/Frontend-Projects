@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 :root {
     /* Colours */
     font-size: 16px;
@@ -8,17 +11,20 @@
     --close: #edd922;
     --invalid: #d40000;
     scroll-behavior: smooth;
+    font-family: 'Pixelify Sans', cursive;
 }
 
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Lilita One', cursive;
     box-sizing: border-box;
 }
 
+
 h1 {
-    margin: 2.5% 0;
+    margin: 2.5% 0 0;
+    text-align: center;
+    font-size: clamp(36px, 5vw, 62px); 
 }
 
 p {
@@ -34,7 +40,22 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    align-items: center;
     padding: 5% 0;
+    background-image: url("../image/wordgame-2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Large rounded green border */
+hr.line {
+    border: 1px solid var(--dark);
+    width: 20rem;
+    border-radius: 5px;
+    margin: 1.5% 0 1%;
 }
 
 .loading {
@@ -43,6 +64,7 @@ section {
 
 .show {
     visibility: visible;
+    opacity: 1 !important;
 }
 
 .grid-wrap {
@@ -57,7 +79,7 @@ section {
 .letter {
     width: 2.5rem;
     height: 2.5rem;
-    border: 0.25rem solid var(--grey);
+    border: 0.15rem solid var(--grey);
     transition: 200ms ease;
     font-size: 26px;
     text-align: center;
@@ -65,6 +87,8 @@ section {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    background-color: var(--white);
+    font-family: 'Lilita One', cursive;
 }
 
 .letter:active {
@@ -97,6 +121,29 @@ section {
 #lottie-animation {
     height: 50px;
     width: 50px;
+}
+
+#message {
+    font-family: 'Lilita One', cursive;
+    font-size: clamp(16px, 2.5vw, 22px); 
+}
+
+.reload {
+    padding: 0.75rem 1.5rem;
+    opacity: 0;
+    transition: 500ms ease;
+    margin-top: 1rem;
+    background-color: var(--correct);
+    color: var(--white);
+    border-radius: 0.25rem;
+    font-family: 'Lilita One', cursive;
+    font-size: clamp(16px, 2.5vw, 22px); 
+}
+
+.reload:hover {
+    background-color: var(--grey);
+    color: var(--dark);
+    font-family: 'Lilita One', cursive;
 }
 
 @keyframes flash {
