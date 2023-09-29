@@ -1,0 +1,40 @@
+/* Naviagation */
+
+nav {
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.menu-btn {
+    width: 55px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-bar {
+    height: 5px;
+    width: 100%;
+    background-color: var(--black);
+    border-radius: 10px;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo-img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 26px; 
+}

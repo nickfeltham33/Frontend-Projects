@@ -37,8 +37,12 @@ section {
     padding: 5% 0;
 }
 
-.hidden {
+.loading {
     visibility: hidden;
+}
+
+.show {
+    visibility: visible;
 }
 
 .grid-wrap {
@@ -88,6 +92,11 @@ section {
 
 .invalid {
     animation: flash 1s ease;
+}
+
+#lottie-animation {
+    height: 50px;
+    width: 50px;
 }
 
 @keyframes flash {

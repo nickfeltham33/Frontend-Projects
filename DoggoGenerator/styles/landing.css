@@ -1,0 +1,21 @@
+section#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-wrap {
+    width: 100%;
+}
+
+.main-image-wrap {
+
+}
+
+.main-img {
+    position: relative;
+    left: -10%;
+    width: 120%;
+}
+
+

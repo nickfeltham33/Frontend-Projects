@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/nav.css">
+    <link rel="stylesheet" href="./styles/info.css">
+    <link rel="stylesheet" href="./styles/landing.css">
+    <link rel="stylesheet" href="./styles/util.css">
+
     <title>Too Many Doggos!</title>
 </head>
 <body>
     <main>
         <!-- Nav -->
         <nav>
+            <div class="wrap-80 space-between">
             <div class="logo">
                 <img class="logo-img" src="./images/logo/doggo_logo.svg" alt="logo - a line drawing of a dog">
                 <p class="logo-text">Too Many Doggo's</p>
@@ -19,22 +25,25 @@
                 <div class="menu-bar"></div>
                 <div class="menu-bar"></div>
             </div>
+            </div>
         </nav>
         <!-- Landing -->
         <section id="home">
-            <div class="left-wrap">
-                <div class="text-wrap">
-                    <h1 class="title">How many doggo's is too many dogoo's? Let's find out!</h1>
-                    <p class="subtitle">There’s millions of random Doggos available at the click of a button. “But why?” I hear you ask! Well we say why the %#!$ not! But, essentially this is just to test out some API functionality in a slightly more exciting way. Anyway click the button to get some Doggos... Now!!</p>
-                    <button class="shadow">
-                        <a href="#gallery-nav">Show Me The Doggos!</a>
-                    </button>
+            <div class="wrap-80 flex-center">
+                <div class="wrap-50">
+                    <div class="text-wrap">
+                        <h1 class="title">How many doggo's is too many dogoo's? <br>Let's find out!</h1>
+                            <p class="subtitle">There’s millions of random Doggos available at the click of a button. “But why?” I hear you ask! Well we say why the %#!$ not! But, essentially this is just to test out some API functionality in a slightly more exciting way. Anyway click the button to get some Doggos... Now!!</p>
+                        <button class="shadow">
+                            <a href="#gallery-nav">Show Me The Doggos!</a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="right-wrap">
-                <div class="main-image-wrap">
-                    <img class="main-img" src="./images/images/doggoLanding.png" alt="a dog wearing sunglassess">
+    
+                <div class="wrap-50">
+                    <div class="main-image-wrap">
+                        <img class="main-img" src="./images/images/doggoLanding.png" alt="a dog wearing sunglassess">
+                    </div>
                 </div>
             </div>
         </section>

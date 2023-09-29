@@ -1,0 +1,57 @@
+/* Info Graphic */
+
+.info-graphic {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5rem;
+}
+.step-wrap {
+    background-color: var(--primary);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.step-number-wrap {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    border-radius: 1.25rem;
+}
+
+.step-number {
+
+}
+.step-img-wrap {
+    /* background-image: url("./images/steps/step-blob.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
+    width: 70%;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.step-img{
+    width: auto;
+    min-height: 10vw;
+    max-width: 100%;
+}
+
+.info-text {
+    text-align: center;
+    margin: 10%;
+}
