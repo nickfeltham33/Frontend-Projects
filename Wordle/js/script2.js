@@ -7,13 +7,14 @@ const GUESSES = 6;
 let currentRow = 0;
 
 
+
 async function init() {
 
-    const res = await fetch("https://words.dev-apis.com/word-of-the-day");
-    const resObj = await res.json();
-    const word = resObj.word.toUpperCase();
-    const wordArray = word.split("");
-
+    // const res = await fetch("https://words.dev-apis.com/word-of-the-day");
+    // const resObj = await res.json();
+    // const word = resObj.word.toUpperCase();
+    // const wordArray = word.split("");
+    let wordArray = ["A","B","B","A","S"];
     isLoading = false;
     setLoading(isLoading);
 
@@ -44,21 +45,26 @@ const commit = (wordArray) => {
     guessArray = currentGuess.split("");
 
     for (let i = 0; i < ANSWER_LENGTH; i++) {
-        // Find the index of the first occurrence of the letter in wordArray
-        const firstIndex = wordArray.indexOf(guessArray[i]);
-        // Check if the letter exists in wordArray
-        if (firstIndex !== -1) {
-          if (guessArray[i] === wordArray[i]) {
-            letters[ANSWER_LENGTH * currentRow + i].classList.add('correct');
-          } else if (wordArray.includes(guessArray[i])) {
-            letters[firstIndex -1].classList.add('close');
-            console.log("this");
-          } else {
-            // Do nothing
-          }
+        if (guessArray[i] === wordArray[i]) {
+            letters[currentRow * ANSWER_LENGTH + i].classList.add("correct");
         }
-      }
+    } 
 
+    for (let i = 0; i < ANSWER_LENGTH; i++) {
+        if (guessArray[i] === wordArray[i]) {
+            // Do nothing
+        }
+        else if (wordArray.includes(guessArray[i])) {
+            letters[currentRow * ANSWER_LENGTH + i].classList.add("close");
+        }
+        else {
+            letters[currentRow * ANSWER_LENGTH + i].classList.add("wrong");
+        }
+    }
+
+    // Issue as it will mark a letter as being in the word, irrespective of number of the letters present.
+    // AAAAA shows as all close but the are only two A's in ABBAS(test word for multple letters)
+    
     currentRow++;
     currentGuess = '';
 }
