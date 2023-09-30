@@ -114,10 +114,6 @@ hr.line {
     color: var(--white);
 }
 
-.invalid {
-    animation: flash 1s ease;
-}
-
 #lottie-animation {
     height: 50px;
     width: 50px;
@@ -126,6 +122,10 @@ hr.line {
 #message {
     font-family: 'Lilita One', cursive;
     font-size: clamp(16px, 2.5vw, 22px); 
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .reload {
@@ -146,11 +146,43 @@ hr.line {
     font-family: 'Lilita One', cursive;
 }
 
+.invalid {
+    animation: flash 1s;
+}
+
+.fade {
+    animation: fade 3s;
+}
+/* Initial styles for the text */
+.winner-text {
+    color: black;
+    animation: winner 500ms infinite alternate;
+}
+
 @keyframes flash {
     5% {
         border-color: var(--invalid);
     }
     100% {
         border-color: var(--grey);
+    }
+}
+
+@keyframes fade {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Define the keyframes for the flash animation */
+@keyframes winner {
+    0% {
+        color: var(--correct);
+    }
+    100% {
+        color: var(--close);
     }
 }
