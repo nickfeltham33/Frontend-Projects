@@ -28,7 +28,8 @@ h1 {
 }
 
 p {
-
+    text-align: center;
+    font-family: 'Lilita One', cursive;
 }
 
 main {
