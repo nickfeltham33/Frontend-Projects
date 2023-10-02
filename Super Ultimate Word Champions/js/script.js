@@ -13,7 +13,7 @@ let finished = false;
 
 async function init() {
     // Fetch the word of the day from the API
-    const res = await fetch("https://words.dev-apis.com/word-of-the-day");
+    const res = await fetch("https://words.dev-apis.com/word-of-the-day?random=");
     const resObj = await res.json();
 
     // Extract and format the word to uppercase
@@ -208,7 +208,7 @@ const invalidWord = () => {
 
 
 const winner = () => {
-    messageDiv.innerText = "YOU'RE A WINNER!!";
+    messageDiv.innerText = "YOU'RE THE SUPER ULTIMATE CHAMPION!!";
     reloadBtn.classList.add("show");
     messageDiv.classList.add("winner-text");
     finished = true;

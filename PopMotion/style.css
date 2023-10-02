@@ -1,0 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.ball {
+    height: 100px;
+    width: 100px;
+    border-radius: 5rem;
+    background-color: blue;
+    position: relative;
+}
