@@ -13,7 +13,7 @@ let finished = false;
 
 async function init() {
     // Fetch the word of the day from the API
-    const res = await fetch("https://words.dev-apis.com/word-of-the-day?random=");
+    const res = await fetch("https://words.dev-apis.com/word-of-the-day?random=1");
     const resObj = await res.json();
 
     // Extract and format the word to uppercase
@@ -184,7 +184,7 @@ const makeMap = (array) => {
 }
 
 const invalidWord = () => {
-    messageDiv.innerText = "That's not a real word, dude!";
+    messageDiv.innerText = "Hey, that's not a real word!";
     
     // Apply the "fade" class to trigger the fade-out effect
     messageDiv.classList.add("fade");
@@ -228,7 +228,7 @@ const winner = () => {
 
 
 const loser = (word) => {
-    messageDiv.innerText = `LOSER! TRY AGAIN?`;
+    messageDiv.innerText = `LOSER! THE WORD WAS ${word}`;
     reloadBtn.classList.add("show");
     reloadBtn.style.backgroundColor = "var(--invalid)"
     finished = true;
