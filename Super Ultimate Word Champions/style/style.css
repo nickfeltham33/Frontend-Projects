@@ -48,7 +48,7 @@ section {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 /* Large rounded green border */

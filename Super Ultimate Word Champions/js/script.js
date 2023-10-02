@@ -228,9 +228,20 @@ const winner = () => {
 
 
 const loser = (word) => {
-    messageDiv.innerText = `LOSER! TRY ANOTHER WORD?`;
+    messageDiv.innerText = `LOSER! TRY AGAIN?`;
     reloadBtn.classList.add("show");
+    reloadBtn.style.backgroundColor = "var(--invalid)"
     finished = true;
+}
+
+document.getElementById("reload").addEventListener("click", event => {
+    reload();
+})
+
+const reload = () => {
+    setTimeout(() => {
+        location.reload();
+    },1000);
 }
 
 //Call the init async function
