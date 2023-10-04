@@ -16,31 +16,37 @@ endBtn.addEventListener("click", stopClick);
 const progressMessage = document.getElementById("progress-message");
 
 async function addNewDoggo() {
-  const promise = await fetch(DOG_URL);
-  const processedResponse = await promise.json();
-  console.log(processedResponse);
+  try {
+    const promise = await fetch(DOG_URL);
+    const processedResponse = await promise.json();
+    console.log(processedResponse);
 
-      // Create the outer div with class "img-wrap"
-      const imgWrapDiv = document.createElement("div");
-      imgWrapDiv.classList.add("img-wrap");
+    // Create the outer div with class "img-wrap"
+    const imgWrapDiv = document.createElement("div");
+    imgWrapDiv.classList.add("img-wrap");
 
-      // Create the inner div with class "dog-img"
-      const dogImgDiv = document.createElement("div");
-      dogImgDiv.classList.add("dog-img");
-      dogImgDiv.style.backgroundImage = `url('${processedResponse.message}')`;
-      dogImgDiv.style.backgroundSize = "cover";
+    // Create the inner div with class "dog-img"
+    const dogImgDiv = document.createElement("div");
+    dogImgDiv.classList.add("dog-img");
+    dogImgDiv.style.backgroundImage = `url('${processedResponse.message}')`;
+    dogImgDiv.style.backgroundSize = "cover";
 
-      // Create the inner div with class "img-bg"
-      const imgBgDiv = document.createElement("div");
-      imgBgDiv.classList.add("img-bg");
+    // Create the inner div with class "img-bg"
+    const imgBgDiv = document.createElement("div");
+    imgBgDiv.classList.add("img-bg");
 
-      // Append the inner divs to the outer div
-      imgWrapDiv.appendChild(dogImgDiv);
-      imgWrapDiv.appendChild(imgBgDiv);
+    // Append the inner divs to the outer div
+    imgWrapDiv.appendChild(dogImgDiv);
+    imgWrapDiv.appendChild(imgBgDiv);
 
-      // Append the outer div to the "dog-target" container
-      doggos.appendChild(imgWrapDiv);
-      count();
+    // Append the outer div to the "dog-target" container
+    doggos.appendChild(imgWrapDiv);
+    count();
+  } catch {
+    console.error('Error fetching dog image:', error);
+    return null;
+  }
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -10,15 +10,9 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.title-wrap {
-    max-width: 20rem;
-    width: 80%;
-    margin: 0 auto;
-    position: absolute;
-    top: 20;
-    left: 20;
+    background-image: url("../images/images/background.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 .grid-wrap {
@@ -75,7 +69,7 @@ main {
 
 .flip-card-front {
     background-color: #ccc;
-    background-image: url("../images/png/back.png");
+    background-image: url("../images/card-back/back.png");
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -88,3 +82,6 @@ main {
     background-size: contain;
 }
 
+.card_id {
+    visibility: hidden;
+}
