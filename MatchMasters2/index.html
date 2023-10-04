@@ -8,12 +8,32 @@
 </head>
 <body>
     <main>
-        <div class="count" id="matched-pairs">Pairs: 0</div>
-        <div id="outcome"></div>
-        <div class="grid-wrap" id="grid-wrap">
+        <nav>
+            <div class="nav-inner">            
+                <div class="score-wrap">
+                    <button id="easy">Easy</button>
+                    <button id="medium">Medium</button>
+                    <button id="hard">Hard</button>
+                    <p class="score main">SCORE: <span id="total">0</span></p>
+                    <p class="score secondary">Correct: <span id="correct">0</span></p>
+                    <p class="score secondary">Wrong: <span id="wrong">0</span></p>
+                </div>
+                <div class="logo-wrap">
+                    <img class="logo" src="./images/logo/mm-logo.png" alt="match masters logo">
+                </div>
+                <div class="timer-wrap">
+                    <p class="timer">TIME: <span id="timer">00:00</span></p>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="message" id="message"></div>
+            <div class="grid-wrap" id="grid-wrap">
+                <!-- Cards Will display here -->
+            </div>
+        </section>
 
-        </div>
-        <div class="message" id="message"></div>
+        <button id="increase">increase</button>
     </main>
     <script src="./js/script.js"></script>
 </body>

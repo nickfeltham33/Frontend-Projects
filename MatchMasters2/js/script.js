@@ -1,18 +1,51 @@
+// Gets card deck
 const CARD_DECK = "https://www.deckofcardsapi.com/api/deck/new/draw/?count=52";
-const grid = document.getElementById("grid-wrap");
-const pairCount = document.getElementById("matched-pairs");
-const outcomeDiv = document.getElementById("outcome");
 
+// gets required divs for actions
+const grid = document.getElementById("grid-wrap");
+const messageDiv = document.getElementById("message");
+const totalDisplay = document.getElementById("total");
+const correctDisplay = document.getElementById("correct");
+const wrongDisplay = document.getElementById("wrong");
+const timerDisplay = document.getElementById("timer");
+const increaseBtn = document.getElementById("increase");
+
+increaseBtn.addEventListener("click", function () {
+    increaseGrid();
+})
+
+// Difficulty buttns
+const easyBtn = document.getElementById("easy");
+const mediumBtn = document.getElementById("medium");
+const hardBtn = document.getElementById("hard");
+
+// Sets maximums
 const maxGrid = 104;
 const deckSize = 52;
 
+// varibale for score keeping
+let runningTotal = 1;
+let totalCorrect = 0;
+let totalWrong = 0;
+
+// Varibales for gameplay
 let currentGridSize = 4;
 let numberOfPairs = currentGridSize / 2;
 let allCards = [];
 let flippedCards = [];
 let matchedPairs = 0;
 
+// counter for each round
+let round = 1;
 
+// Initialize variables
+let minutes = 0;
+let seconds = 0;
+
+// Set to easy to start
+let difficulty = 10;
+
+// Get the cards and push the card objects to an array
 const populateCardsArray = async () => {
     try {
       const response = await fetch(CARD_DECK);
@@ -24,6 +57,7 @@ const populateCardsArray = async () => {
     }
 }
 
+// Create a shuffled grid of pairs
 const createGrid = () => {
     matchedPairs = 0;
 
@@ -104,8 +138,9 @@ const addFlipCards = () => {
                         card1.classList.add('matched');
                         card2.classList.add('matched');
                         matchedPairs++;
-                        pairCount.innerText = `Pairs: ${matchedPairs}`;
-
+                        runningTotal += 5;
+                        totalCorrect++;
+                        updateScores();
                         // Check if all pairs are matched (game over)
                         if (matchedPairs === numberOfPairs) {
                             setTimeout(() => {
@@ -113,7 +148,9 @@ const addFlipCards = () => {
                             },1000);
                         }
                         } else {
-                            // Cards do not match, flip them back
+                            runningTotal -= 1;
+                            totalWrong++;
+                            updateScores();
                             setTimeout(() => {
                                 card1.querySelector('.flip-card-inner').classList.remove('flipped');
                                 card2.querySelector('.flip-card-inner').classList.remove('flipped');
@@ -126,6 +163,35 @@ const addFlipCards = () => {
             }
         });
     });
+}
+
+// Function to update the timer display
+function updateTimer() {
+    seconds++;
+    if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+    }
+
+    // Check if 10 seconds have passed
+    if (seconds % difficulty === 0) {
+        runningTotal -= 1; 
+        updateScores();
+        if (runningTotal <= 0) {
+            loser();
+        }
+    }
+
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedSeconds = seconds.toString().padStart(2, '0');
+    timerDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+    console.log();
+}
+
+const updateScores = () => {
+    totalDisplay.innerText = runningTotal;
+    wrongDisplay.innerText = totalWrong;
+    correctDisplay.innerText = totalCorrect;
 }
 
 const increaseGrid = () => {
@@ -158,7 +224,7 @@ const increaseGrid = () => {
                 child.style.height = "8vw";
                 child.style.width = "5vw";
             }        
-        } else if (currentGridSize >= 44 && currentGridSize < 84) {
+        } else if (currentGridSize >= 44 && currentGridSize < 66) {
             grid.style.gridTemplateColumns = "repeat(12, 1fr)";
             const children = grid.children;
         
@@ -167,8 +233,8 @@ const increaseGrid = () => {
                 child.style.height = "5vw";
                 child.style.width = "4vw";
             }        
-        } else if (currentGridSize >= 84) {
-            grid.style.gridTemplateColumns = "repeat(16, 1fr)";
+        } else if (currentGridSize >= 66) {
+            grid.style.gridTemplateColumns = "repeat(20, 1fr)";
             const children = grid.children;
         
             // Loop through each child element and set their styles
@@ -184,22 +250,42 @@ const clearGrid = () => {
     grid.innerHTML = "";
 }
 
+// Setting Difficulties
+easyBtn.addEventListener("click" , function () {
+    difficulty = 10;
+});
+
+mediumBtn.addEventListener("click", function(){
+    difficulty = 5;
+});
+
+hardBtn.addEventListener("click", function () {
+    difficulty = 2;
+});
+
 const winner = () => {
     if (currentGridSize > maxGrid) {
-        outcomeDiv.innerText = "You are the Match Masters Supreme Champion!"
+        messageDiv.innerText = "You are the Match Masters Supreme Champion!"
         return;
     } else {
-        outcomeDiv.innerText = "You win this round! On to the next!"
+        round++;
+        messageDiv.innerText = `Round: ${round}`
         setTimeout(() => {
-                outcomeDiv.innerText = ""
+                messageDiv.innerText = ""
         },2000)
     }
     increaseGrid();
 }
 
+const loser = () => {
+    alert("You ran out of points!");
+    location.reload();
+}
+
 const initializeGame = async () => {
     await populateCardsArray();
     createGrid();
+    setInterval(updateTimer, 1000);
 }
   
 initializeGame();
