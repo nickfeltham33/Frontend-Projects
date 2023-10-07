@@ -43,7 +43,7 @@ let minutes = 0;
 let seconds = 0;
 
 // Set to easy to start
-let difficulty = 10;
+let difficulty = 100;
 
 // Get the cards and push the card objects to an array
 const populateCardsArray = async () => {
@@ -195,53 +195,43 @@ const updateScores = () => {
 }
 
 const increaseGrid = () => {
-    currentGridSize += 4;
+    if (currentGridSize >= 12 && currentGridSize < 42) {
+        currentGridSize += 6;
+    } else if (currentGridSize >= 42) {
+        currentGridSize += 8;
+    } else {
+        currentGridSize += 4;
+    }
     numberOfPairs = currentGridSize / 2;
-
+    console.log(currentGridSize);
     if (currentGridSize > maxGrid) {
         winner();
     } else {
         clearGrid();
         createGrid(currentGridSize);
-        if (currentGridSize === 8) {
-            grid.style.gridTemplateColumns = "repeat(4, 1fr)";
-        } else if (currentGridSize === 20) {
-            grid.style.gridTemplateColumns = "repeat(5, 1fr)";
-        } else if (currentGridSize === 24) {
-            grid.style.gridTemplateColumns = "repeat(6, 1fr)";
-        } else if (currentGridSize === 28) {
-            grid.style.gridTemplateColumns = "repeat(7, 1fr)";
-        } else if (currentGridSize === 32) {
-            grid.style.gridTemplateColumns = "repeat(8, 1fr)";
-        } else if (currentGridSize === 36) {
-            grid.style.gridTemplateColumns = "repeat(9, 1fr)";
-        } else if (currentGridSize === 40) {
-            grid.style.gridTemplateColumns = "repeat(10, 1fr)";
-            const children = grid.children;
-        
-            // Loop through each child element and set their styles
-            for (const child of children) {
-                child.style.height = "8vw";
-                child.style.width = "5vw";
-            }        
-        } else if (currentGridSize >= 44 && currentGridSize < 66) {
-            grid.style.gridTemplateColumns = "repeat(12, 1fr)";
-            const children = grid.children;
-        
-            // Loop through each child element and set their styles
-            for (const child of children) {
-                child.style.height = "5vw";
-                child.style.width = "4vw";
-            }        
-        } else if (currentGridSize >= 66) {
-            grid.style.gridTemplateColumns = "repeat(20, 1fr)";
-            const children = grid.children;
-        
-            // Loop through each child element and set their styles
-            for (const child of children) {
-                child.style.height = "5vw";
-                child.style.width = "4vw";
-            }        
+        switch (currentGridSize) {
+            case 18:
+                grid.style.gridTemplateColumns = "repeat(6, 1fr)";
+                console.log("18");
+                break;
+            case 24:
+                grid.style.gridTemplateColumns = "repeat(8, 1fr)";  
+                break;
+            case 30: 
+                grid.style.gridTemplateColumns = "repeat(10, 1fr)";
+                break;
+            case 36: 
+                grid.style.gridTemplateColumns = "repeat(12, 1fr)";
+                break;
+            case 44:
+                grid.style.gridTemplateColumns = "repeat(11, 1fr)";  
+                break;
+            case 52:
+                grid.style.gridTemplateColumns = "repeat(13, 1fr)";
+                break;
+            default:
+                grid.style.gridTemplateColumns = "repeat(4, 1fr)";
+                break; 
         }
     }
 }
